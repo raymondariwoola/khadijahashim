@@ -3,100 +3,2377 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Khadija Hashim</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUa6mY5IgsGjfIDP4I5ERrKXJcW57TZebK64jqgbx9k2vvoCBlO5pLez7Kq2" crossorigin="anonymous">
+  <title>Khadija Hashim — People Experience &amp; CX Leader</title>
+  <meta name="description" content="Khadija Hashim — Head of People Experience &amp; Engagement at DIB. 20+ years transforming customer experience, culture, and people strategy across banking.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
+    /* =============================================
+       ROOT VARIABLES
+       ============================================= */
+    :root {
+      --navy:          #1C2951;
+      --navy-dark:     #111B35;
+      --navy-mid:      #243460;
+      --gold:          #C9A84C;
+      --gold-light:    #E8D5A3;
+      --gold-pale:     #F7EDD8;
+      --ivory:         #F5E6C8;
+      --cream:         #FAFAF5;
+      --off-white:     #F4F2EE;
+      --white:         #FFFFFF;
+      --text:          #1A1A2E;
+      --text-mid:      #5A5875;
+      --text-light:    #9090AA;
+      --border-gold:   rgba(201,168,76,0.25);
+      --border-light:  rgba(28,41,81,0.08);
+      --shadow-sm:     0 2px 12px rgba(28,41,81,0.07);
+      --shadow-md:     0 8px 32px rgba(28,41,81,0.11);
+      --shadow-lg:     0 20px 60px rgba(28,41,81,0.16);
+      --radius:        14px;
+      --radius-sm:     8px;
+      --transition:    0.32s cubic-bezier(0.4,0,0.2,1);
+      --font-display:  'Cormorant Garamond', Georgia, serif;
+      --font-body:     'Inter', system-ui, sans-serif;
+    }
+
+    /* =============================================
+       BASE
+       ============================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f7f7;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
+      background: var(--cream);
+      overflow-x: hidden;
     }
-    .hero {
-      background-color: #ffffff;
-      padding: 4rem 0;
+
+    h1, h2, h3, h4 { font-family: var(--font-display); }
+
+    img { max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
     }
-    .hero h1 {
+
+    .section-heading {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .section-heading-light {
+      color: var(--white);
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .gold-rule {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy-dark);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 2px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      color: var(--navy-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+    }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+      padding: 0.75rem 1.75rem;
+      border-radius: 2px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-outline-gold:hover {
+      background: rgba(201,168,76,0.12);
+      transform: translateY(-1px);
+    }
+
+    section { position: relative; }
+
+    /* =============================================
+       NAVIGATION
+       ============================================= */
+    #mainNav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+    }
+
+    #mainNav.scrolled {
+      background: var(--navy-dark);
+      padding: 0.9rem 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .navbar-toggler {
+      border: 1px solid var(--border-gold);
+      padding: 0.4rem 0.6rem;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(201,168,76,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .nav-link-item {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75) !important;
+      padding: 0.4rem 1rem !important;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-link-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 1rem; right: 1rem;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active {
+      color: var(--gold) !important;
+    }
+
+    .nav-link-item:hover::after,
+    .nav-link-item.active::after {
+      transform: scaleX(1);
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at 75% 40%, rgba(36,52,96,0.7) 0%, transparent 55%),
+        radial-gradient(ellipse at 5% 85%, rgba(201,168,76,0.07) 0%, transparent 40%),
+        linear-gradient(145deg, var(--navy-dark) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+      overflow: hidden;
+    }
+
+    /* dot grid texture overlay */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(201,168,76,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* corner decorations */
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 3rem; right: 3rem;
+      width: 100px; height: 100px;
+      border-right: 1.5px solid rgba(201,168,76,0.3);
+      border-bottom: 1.5px solid rgba(201,168,76,0.3);
+      pointer-events: none;
+    }
+
+    .hero-corner-tl {
+      position: absolute;
+      top: 6rem; left: 2rem;
+      width: 80px; height: 80px;
+      border-left: 1.5px solid rgba(201,168,76,0.2);
+      border-top: 1.5px solid rgba(201,168,76,0.2);
+      pointer-events: none;
+    }
+
+    /* Portrait */
+    .portrait-frame {
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      padding: 5px;
+      background: conic-gradient(from 0deg, var(--gold), var(--gold-light), var(--gold));
+      box-shadow: 0 0 0 1px rgba(201,168,76,0.1), 0 0 50px rgba(201,168,76,0.18), 0 30px 70px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+
+    .portrait-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 38% 35%, #2d4a8a 0%, var(--navy) 45%, var(--navy-dark) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      overflow: hidden;
+    }
+
+    .portrait-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .portrait-icon {
+      font-size: 4.5rem;
+      color: rgba(201,168,76,0.35);
+    }
+
+    .portrait-caption {
+      font-size: 0.62rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.45);
+      font-family: var(--font-body);
+    }
+
+    /* Hero text */
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-role-wrapper {
+      height: 2rem;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-role {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--gold-light);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .hero-role.fade-out {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-scroll {
+      margin-top: 3rem;
+      color: rgba(201,168,76,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* =============================================
+       ABOUT
+       ============================================= */
+    #about {
+      background: var(--white);
+      padding: 7rem 0;
+    }
+
+    .about-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--navy);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-quote span {
+      color: var(--gold);
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .pillar-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      transition: var(--transition);
+      background: var(--cream);
+    }
+
+    .pillar-card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pillar-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       IMPACT
+       ============================================= */
+    #impact {
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(36,52,96,0.5) 0%, transparent 60%),
+        linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 6rem 0;
+    }
+
+    /* dot grid for impact section too */
+    #impact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      background: rgba(201,168,76,0.06);
+      transform: translateY(-3px);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .stat-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 0.4rem;
+    }
+
+    /* =============================================
+       SIGNATURE WORK
+       ============================================= */
+    #signature-work {
+      background: var(--cream);
+      padding: 7rem 0;
+    }
+
+    .initiative-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      border: 1px solid var(--border-light);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .initiative-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .initiative-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-gold);
+    }
+
+    .initiative-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .initiative-icon {
+      width: 52px; height: 52px;
+      border-radius: var(--radius-sm);
+      background: rgba(201,168,76,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .initiative-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .initiative-desc {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .initiative-metric {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-top: 1px solid var(--border-gold);
+      padding-top: 0.75rem;
+      width: 100%;
+    }
+
+    /* =============================================
+       CAREER TIMELINE
+       ============================================= */
+    #career {
+      background: var(--white);
+      padding: 7rem 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 8%, var(--gold) 92%, transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 3.5rem;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-content {
+      width: calc(50% - 2.5rem);
+      background: var(--cream);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .timeline-content:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+      margin-right: 2.5rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-left: 2.5rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      top: 1.25rem;
+      transform: translateX(-50%);
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--gold);
+      z-index: 1;
+    }
+
+    .timeline-dot.current {
+      background: var(--gold);
+      width: 16px; height: 16px;
+      box-shadow: 0 0 0 3px var(--gold), 0 0 16px rgba(201,168,76,0.5);
+    }
+
+    .timeline-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 0.72rem;
       font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
     }
-    .content-section {
-      background-color: #ffffff;
-      border-radius: 0.5rem;
+
+    .badge-nbd    { background: rgba(28,41,81,0.08); color: var(--navy); }
+    .badge-enbd   { background: rgba(0,100,60,0.1);  color: #006440; }
+    .badge-tanf   { background: rgba(150,30,30,0.1); color: #961E1E; }
+    .badge-dib    { background: rgba(201,168,76,0.15); color: #8C6B20; }
+    .badge-edu    { background: rgba(80,80,200,0.1); color: #4050C8; }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-org {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-dates {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .current-chip {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--navy-dark);
+      background: var(--gold);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* =============================================
+       AWARDS
+       ============================================= */
+    #awards {
+      background:
+        linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 7rem 0;
+    }
+
+    #awards::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .award-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .award-card:hover {
+      background: rgba(201,168,76,0.08);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .award-icon {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .award-year {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .award-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .award-body {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* =============================================
+       EVENTS
+       ============================================= */
+    #events {
+      background: var(--cream);
+      padding: 7rem 0;
+    }
+
+    .event-featured {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+
+    .event-featured:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .event-media {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+
+    .event-media-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.7);
+      margin-bottom: 0.75rem;
+    }
+
+    .event-media-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--white);
+      text-align: center;
+      padding: 0 2rem;
+      line-height: 1.2;
+    }
+
+    .event-play-btn {
+      margin-top: 1.5rem;
+      background: rgba(201,168,76,0.15);
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      padding: 0.6rem 1.4rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .event-play-btn:hover {
+      background: rgba(201,168,76,0.25);
+    }
+
+    .event-body {
       padding: 2rem;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
+
+    .event-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+
+    .event-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .event-desc {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .event-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap var(--transition);
+    }
+
+    .event-link:hover { gap: 0.7rem; color: var(--gold); }
+
+    .event-placeholder {
+      background: var(--white);
+      border: 1.5px dashed rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+      transition: var(--transition);
+    }
+
+    .event-placeholder:hover {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.03);
+    }
+
+    .event-ph-icon {
+      font-size: 2rem;
+      color: rgba(201,168,76,0.3);
+      margin-bottom: 0.75rem;
+    }
+
+    .event-ph-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .event-ph-sub {
+      font-size: 0.78rem;
+      color: rgba(0,0,0,0.25);
+      letter-spacing: 1px;
+    }
+
+    /* =============================================
+       MEDIA
+       ============================================= */
+    #media {
+      background: var(--white);
+      padding: 7rem 0;
+    }
+
+    .media-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border-gold);
+    }
+
+    .media-card-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+    }
+
+    .media-card-header .fa-microphone {
+      font-size: 2.5rem;
+      color: rgba(201,168,76,0.6);
+    }
+
+    .media-card-body {
+      padding: 1.5rem;
+    }
+
+    .media-type {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .media-card-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .media-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .media-placeholder {
+      background: var(--cream);
+      border-radius: var(--radius);
+      border: 1.5px dashed rgba(201,168,76,0.3);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+    }
+
+    /* =============================================
+       INSIGHTS / BLOG
+       ============================================= */
+    #insights {
+      background: var(--off-white);
+      padding: 7rem 0;
+    }
+
+    .blog-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--gold);
+      padding: 2rem;
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .blog-date {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+
+    .blog-excerpt {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .blog-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: rgba(28,41,81,0.06);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-right: 0.4rem;
+    }
+
+    .blog-read-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap var(--transition);
+    }
+
+    .blog-read-link:hover { gap: 0.7rem; color: var(--gold); }
+
+    /* shimmer placeholder */
+    @keyframes shimmer {
+      0%   { background-position: -1000px 0; }
+      100% { background-position:  1000px 0; }
+    }
+
+    .blog-placeholder {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--border-gold);
+      padding: 2rem;
+      height: 100%;
+    }
+
+    .shimmer-line {
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(90deg,
+        rgba(245,230,200,0.5) 25%,
+        rgba(248,240,218,0.9) 50%,
+        rgba(245,230,200,0.5) 75%
+      );
+      background-size: 2000px 100%;
+      animation: shimmer 2.5s ease-in-out infinite;
+    }
+
+    .blog-coming-soon {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      text-align: center;
+      padding-top: 0.75rem;
+    }
+
+    .insights-note {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      line-height: 1.6;
+    }
+
+    .insights-note code {
+      background: rgba(201,168,76,0.12);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      color: var(--navy);
+    }
+
+    /* =============================================
+       EDUCATION
+       ============================================= */
+    #education {
+      background: var(--white);
+      padding: 7rem 0;
+    }
+
+    .edu-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      background: var(--cream);
+      height: 100%;
+    }
+
+    .edu-item:hover {
+      border-color: var(--border-gold);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .edu-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .edu-degree {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+
+    .edu-institution {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .edu-year {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+
+    /* =============================================
+       CONNECT / FOOTER
+       ============================================= */
+    #connect {
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(36,52,96,0.6) 0%, transparent 55%),
+        linear-gradient(145deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 8rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #connect::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(201,168,76,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .connect-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .connect-heading span { color: var(--gold); }
+
+    .connect-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 500px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    footer {
+      background: var(--navy-dark);
+      padding: 2rem 0;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .footer-text {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .footer-social a {
+      color: rgba(201,168,76,0.5);
+      font-size: 1.1rem;
+      transition: color var(--transition);
+      margin-left: 1.25rem;
+    }
+
+    .footer-social a:hover { color: var(--gold); }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-fadein { animation: fadeInUp 0.8s ease forwards; }
+
+    /* =============================================
+       RESPONSIVE
+       ============================================= */
+    @media (max-width: 991.98px) {
+      .timeline::before { left: 1.5rem; transform: none; }
+
+      .timeline-item { display: block; padding-left: 4rem; }
+
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content {
+        margin: 0;
+        width: 100%;
+      }
+
+      .timeline-dot {
+        left: calc(1.5rem - 6px);
+        transform: none;
+      }
+
+      .portrait-frame {
+        width: 220px; height: 220px;
+        margin: 0 auto 2.5rem;
+      }
+
+      .hero-name { font-size: clamp(2.5rem, 9vw, 3.5rem); }
+    }
+
+    @media (max-width: 575.98px) {
+      #hero { padding-top: 5rem; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn-gold,
+      .hero-ctas .btn-outline-gold { width: 100%; text-align: center; }
+      .portrait-frame { width: 180px; height: 180px; }
+    }
+
+    /* Utility */
+    .py-section { padding-top: 7rem; padding-bottom: 7rem; }
   </style>
 </head>
+
 <body>
-  <header class="hero text-center">
+
+  <!-- =============================================
+       NAVIGATION
+       ============================================= -->
+  <nav id="mainNav" class="navbar navbar-expand-lg">
     <div class="container">
-      <h1 data-aos="fade-down">Khadija Hashim</h1>
-      <h2 class="lead" data-aos="fade-up">Finance Professional | MBA | Sustainability Enthusiast</h2>
+      <a class="navbar-brand nav-brand" href="#">KH</a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link nav-link-item" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-item" href="#career">Journey</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-item" href="#impact">Impact</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-item" href="#events">Events</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-item" href="#insights">Insights</a></li>
+          <li class="nav-item ms-lg-2">
+            <a class="btn-gold" href="#connect" style="display:inline-block;padding:0.55rem 1.4rem;font-size:0.75rem;">Connect</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <main class="container my-4">
-    <section class="content-section mb-5" data-aos="fade-right">
-      <p>
-        I am a purpose-driven finance professional with a background in investment banking, corporate finance, and financial strategy. My journey has taken me through various dynamic roles that sharpened my analytical mindset and expanded my understanding of financial markets.
-      </p>
-      <p>
-        I hold an MBA with a focus on Finance, and I'm deeply passionate about initiatives that bridge financial growth and sustainable development. Over the years, I’ve had the opportunity to work with global firms, driving value through data, insight, and disciplined execution.
-      </p>
-      <p>
-        Currently, I'm focused on building financial models that empower businesses to make informed decisions, while continuously exploring ways finance can drive meaningful impact — socially and environmentally.
-      </p>
-      <p>
-        When I’m not deep-diving into numbers, I’m engaging with topics around climate finance, fintech, and inclusive economic systems.
-      </p>
-    </section>
 
-      <section class="content-section mb-5" data-aos="fade-left">
-        <h3 class="mb-3">Highlights &amp; Achievements</h3>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Strategic Portfolio Analyst at ADQ:</strong> Supported portfolio strategy and investment analysis at one of the UAE’s leading holding companies.</li>
-        <li class="list-group-item"><strong>ESG Contributor:</strong> Passionate about integrating sustainability into financial strategy, with exposure to ESG-aligned projects and reporting.</li>
-        <li class="list-group-item"><strong>CFA Level II Candidate:</strong> Actively pursuing deeper expertise in investment management and ethical finance.</li>
-        <li class="list-group-item"><strong>Active Member of CFA Society Emirates:</strong> Engages in financial literacy and community initiatives within the UAE finance community.</li>
-        <li class="list-group-item"><strong>MBA Graduate:</strong> Specialized in Finance, with hands-on exposure to corporate valuation, strategic growth planning, and financial modeling.</li>
-      </ul>
-      </section>
+  <!-- =============================================
+       HERO
+       ============================================= -->
+  <section id="hero">
+    <div class="hero-corner-tl"></div>
+    <div class="container py-5">
+      <div class="row align-items-center g-5 min-vh-90" style="min-height:90vh;">
 
-      <section class="content-section mb-5" data-aos="fade-right">
-        <h3 class="mb-3">Books Written</h3>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Leading with Empathy:</strong> A guide to building culture-driven organizations.</li>
-          <li class="list-group-item"><strong>Knowledge in Action:</strong> Strategies for fostering continuous learning.</li>
-        </ul>
-      </section>
+        <!-- Portrait -->
+        <div class="col-lg-4 d-flex justify-content-center" data-aos="fade-right" data-aos-duration="900">
+          <div class="portrait-frame">
+            <div class="portrait-inner" id="portraitInner">
+              <i class="fa-solid fa-user portrait-icon" id="portraitIcon"></i>
+              <span class="portrait-caption" id="portraitCaption">Portrait Coming Soon</span>
+            </div>
+          </div>
+        </div>
 
-      <section class="content-section mb-5" data-aos="fade-left">
-        <h3 class="mb-3">Podcasts Attended</h3>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>"Culture Catalyst":</strong> Discussed transformative people strategies.</li>
-          <li class="list-group-item"><strong>"The Knowledge Hub":</strong> Shared insights on organizational learning.</li>
-        </ul>
-      </section>
+        <!-- Text -->
+        <div class="col-lg-8" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+          <p class="hero-eyebrow">Head of People Experience &amp; Engagement &nbsp;·&nbsp; DIB</p>
+          <h1 class="hero-name">Khadija<br>Hashim</h1>
+          <div class="hero-role-wrapper">
+            <p class="hero-role" id="heroRole">CX &amp; Culture Transformation</p>
+          </div>
+          <p class="hero-bio">
+            20+ years transforming customer experience, culture, and people strategy
+            across some of the UAE's most recognised banking institutions.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://www.linkedin.com/in/khadija-hashim-7a721617a/" target="_blank" rel="noopener" class="btn-gold">
+              <i class="fa-brands fa-linkedin me-2"></i>Connect on LinkedIn
+            </a>
+            <a href="#about" class="btn-outline-gold">Explore My Work</a>
+          </div>
+          <div class="hero-scroll">
+            <i class="fa-solid fa-chevron-down" style="animation:bounce 1.6s infinite;"></i>
+            <span>Scroll to explore</span>
+          </div>
+        </div>
 
-      <section class="content-section mb-5" data-aos="fade-right">
-        <h3 class="mb-3">Head of People, Knowledge &amp; Culture</h3>
-        <p>
-          I lead initiatives that empower teams through collaborative learning,
-          inclusive policies, and a vibrant workplace culture. My mission is to build
-          environments where people thrive and knowledge flows freely across the organization.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ABOUT
+       ============================================= -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-start g-5">
+
+        <!-- Quote + Pillars -->
+        <div class="col-lg-5" data-aos="fade-right">
+          <span class="section-label">About</span>
+          <blockquote class="about-quote">
+            "CX isn't just about service &mdash; it's about
+            <span>shaping culture</span>, empowering people,
+            and driving strategic impact."
+          </blockquote>
+          <span class="gold-rule"></span>
+          <p class="section-sub">
+            A belief system that has guided two decades of transformation
+            across some of the UAE's most iconic banking brands.
+          </p>
+        </div>
+
+        <!-- Bio -->
+        <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+          <h2 class="section-heading mb-4">The Story Behind the Work</h2>
+          <div class="about-text">
+            <p>
+              Twenty years ago, I walked into a bank as a young woman balancing her first full-time role
+              with evening degree classes at the University of Wales. I didn't have a roadmap —
+              just drive, curiosity, and a deep belief that people and their experiences are the
+              heartbeat of any great organisation. What followed was a two-decade journey that took me
+              from Reconciliation Specialist to Associate Vice President, across Emirates NBD, Tanfeeth,
+              and now DIB — shaping cultures, building people-first systems, and leading
+              transformation at scale.
+            </p>
+            <p>
+              Today, I specialise in the space where strategy meets humanity. I have led CX and
+              culture transformation programmes impacting over 15,000 employees across four brands
+              and seven markets. I build environments where people feel genuinely seen, where
+              knowledge flows freely, and where recognition is more than a reward — it's a moment
+              that truly matters.
+            </p>
+            <p>
+              Beyond the professional journey, I am a mother to Hamoodi — a healthy, bright,
+              wonderful boy who came into the world at just 24 weeks and taught our family the
+              true meaning of resilience and hope. That experience made me a deeper listener,
+              a more empathetic leader, and someone who never takes an ordinary day for granted.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pillars -->
+      <div class="row g-4 mt-5">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-users-line"></i></div>
+            <h4 class="pillar-title">People First</h4>
+            <p class="pillar-desc">Every strategy, programme, and framework begins and ends with the humans it serves.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h4 class="pillar-title">Culture by Design</h4>
+            <p class="pillar-desc">Cultures don't happen by accident. They are architected, intentionally and consistently.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-chart-line"></i></div>
+            <h4 class="pillar-title">Impact at Scale</h4>
+            <p class="pillar-desc">Individual moments matter. But the real measure of leadership is how far the ripple travels.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       IMPACT NUMBERS
+       ============================================= -->
+  <section id="impact">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-label">The Numbers</span>
+        <h2 class="section-heading section-heading-light">A Measurable Difference</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="stat-card">
+            <div class="stat-number">
+              <span class="counter" data-target="20" data-suffix="+">0</span>
+            </div>
+            <div class="stat-label">Years in Banking</div>
+            <div class="stat-sub">National Bank of Dubai → DIB</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+          <div class="stat-card">
+            <div class="stat-number">
+              <span class="counter" data-target="16000" data-suffix="+">0</span>
+            </div>
+            <div class="stat-label">Employees Impacted</div>
+            <div class="stat-sub">via CX Month programme</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+          <div class="stat-card">
+            <div class="stat-number">
+              <span class="counter" data-target="5" data-suffix="×">0</span>
+            </div>
+            <div class="stat-label">International CX Awards</div>
+            <div class="stat-sub">Forrester · 2018 – 2024</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+          <div class="stat-card">
+            <div class="stat-number">
+              <span class="counter" data-target="60" data-suffix="%">0</span>
+            </div>
+            <div class="stat-label">Training Time Reduced</div>
+            <div class="stat-sub">Saving 16 FTEs annually</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       SIGNATURE WORK
+       ============================================= -->
+  <section id="signature-work" class="py-section">
+    <div class="container">
+      <div class="row align-items-end mb-5">
+        <div class="col-lg-7" data-aos="fade-right">
+          <span class="section-label">Signature Work</span>
+          <h2 class="section-heading">Work That Moved the Needle</h2>
+          <p class="section-sub">
+            Four programmes built from scratch that changed how employees show up,
+            how organisations learn, and how cultures endure.
+          </p>
+        </div>
+      </div>
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="initiative-card">
+            <div class="initiative-icon"><i class="fa-solid fa-star"></i></div>
+            <h4 class="initiative-title">CX Month</h4>
+            <p class="initiative-desc">
+              Transformed an internal campaign into a landmark annual event,
+              expanding participation from 250 employees to 16,000+
+              across four brands and seven international markets.
+            </p>
+            <span class="initiative-metric">250 → 16,000+ participants</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+          <div class="initiative-card">
+            <div class="initiative-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <h4 class="initiative-title">You Make Us Better</h4>
+            <p class="initiative-desc">
+              Launched a group-wide employee advocacy programme that channelled
+              authentic frontline voices to rebuild brand trust following
+              periods of negative customer feedback.
+            </p>
+            <span class="initiative-metric">Group-wide employee advocacy</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+          <div class="initiative-card">
+            <div class="initiative-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h4 class="initiative-title">Tanfeeth University</h4>
+            <p class="initiative-desc">
+              Designed and launched a digital learning platform that reduced
+              onboarding from 6–7 days to 2 hours, saving the equivalent of
+              16 full-time employees in annual training costs.
+            </p>
+            <span class="initiative-metric">60% reduction in training time</span>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+          <div class="initiative-card">
+            <div class="initiative-icon"><i class="fa-solid fa-gem"></i></div>
+            <h4 class="initiative-title">CODE Values Framework</h4>
+            <p class="initiative-desc">
+              Translated Emirates NBD's group vision, purpose, and values
+              into an award-winning engagement framework adopted
+              across all brands — recognised with the Emerald GEMS Award.
+            </p>
+            <span class="initiative-metric">Emerald GEMS Award 2022</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CAREER TIMELINE
+       ============================================= -->
+  <section id="career">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-label">Career Journey</span>
+        <h2 class="section-heading">Twenty Years. One Constant: People.</h2>
+        <p class="section-sub mx-auto">
+          A progression from banking operations to enterprise people leadership,
+          built one meaningful role at a time.
         </p>
-      </section>
+      </div>
 
-    <section class="text-center" data-aos="zoom-in">
-      <p>
-        📫 <strong>Connect with me on <a href="https://www.linkedin.com/in/khadija-hashim-7a721617a/" target="_blank">LinkedIn</a></strong>
+      <div class="timeline">
+
+        <!-- 1: NBD -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge badge-nbd">NBD</div>
+            <h5 class="timeline-role">Reconciliation Specialist</h5>
+            <p class="timeline-org">National Bank of Dubai</p>
+            <p class="timeline-dates">2005 – 2008</p>
+            <p class="timeline-desc">
+              Began a banking career in operations and reconciliation,
+              building the analytical and process discipline that would underpin
+              two decades of transformation work.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2: ENBD APM -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge badge-enbd">ENBD</div>
+            <h5 class="timeline-role">Assistant Project Manager</h5>
+            <p class="timeline-org">Emirates NBD</p>
+            <p class="timeline-dates">2008 – 2013 &nbsp;·&nbsp; 5 years</p>
+            <p class="timeline-desc">
+              Took on project management responsibilities within the
+              bank, expanding scope and developing stakeholder engagement
+              skills across operational units.
+            </p>
+          </div>
+        </div>
+
+        <!-- EDU: Wales -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content" style="border-style:dashed;">
+            <div class="timeline-badge badge-edu"><i class="fa-solid fa-graduation-cap" style="font-size:0.8rem;"></i></div>
+            <h5 class="timeline-role" style="color:var(--text-mid);">Bachelor's in Business Administration (Marketing)</h5>
+            <p class="timeline-org" style="color:var(--text-light);">University of Wales, Dubai Campus</p>
+            <p class="timeline-dates">2003 – 2007 &nbsp;·&nbsp; Evening study alongside full-time role</p>
+          </div>
+        </div>
+
+        <!-- 3: Tanfeeth -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge badge-tanf">TAN</div>
+            <h5 class="timeline-role">Manager, Learning &amp; Development</h5>
+            <p class="timeline-org">Tanfeeth (Emirates NBD Group)</p>
+            <p class="timeline-dates">2013 – 2017 &nbsp;·&nbsp; 4 years</p>
+            <p class="timeline-desc">
+              Led the Learning &amp; Development function, launching the
+              Tanfeeth University digital platform and Customer Service Academy.
+              Reduced training time by 60% and improved SLAs by 40%.
+            </p>
+          </div>
+        </div>
+
+        <!-- EDU: NYUAD -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content" style="border-style:dashed;">
+            <div class="timeline-badge badge-edu"><i class="fa-solid fa-graduation-cap" style="font-size:0.8rem;"></i></div>
+            <h5 class="timeline-role" style="color:var(--text-mid);">Leadership Programme</h5>
+            <p class="timeline-org" style="color:var(--text-light);">New York University Abu Dhabi (NYUAD)</p>
+            <p class="timeline-dates">2015 – 2016</p>
+          </div>
+        </div>
+
+        <!-- 4: Senior Manager -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge badge-enbd">ENBD</div>
+            <h5 class="timeline-role">Senior Manager, Culture &amp; Service Performance</h5>
+            <p class="timeline-org">Emirates NBD — Group Customer Experience</p>
+            <p class="timeline-dates">2017 – 2020 &nbsp;·&nbsp; 3 years</p>
+            <p class="timeline-desc">
+              Orchestrated a cultural transformation programme aligned with the
+              TOP Service Model. Expanded Customer Experience Month from 4,000 to
+              16,000+ employees and pioneered real-time service performance dashboards.
+            </p>
+          </div>
+        </div>
+
+        <!-- EDU: INSEAD -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content" style="border-style:dashed;">
+            <div class="timeline-badge badge-edu"><i class="fa-solid fa-graduation-cap" style="font-size:0.8rem;"></i></div>
+            <h5 class="timeline-role" style="color:var(--text-mid);">Leadership &amp; Corporate Entrepreneurship Programme</h5>
+            <p class="timeline-org" style="color:var(--text-light);">INSEAD</p>
+            <p class="timeline-dates">November 2019</p>
+          </div>
+        </div>
+
+        <!-- 5: AVP -->
+        <div class="timeline-item" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-badge badge-enbd">ENBD</div>
+            <h5 class="timeline-role">Associate Vice President, CX &amp; Culture</h5>
+            <p class="timeline-org">Emirates NBD — Group Customer Experience</p>
+            <p class="timeline-dates">2020 – 2026 &nbsp;·&nbsp; 6 years</p>
+            <p class="timeline-desc">
+              Led enterprise-wide CX transformation impacting 15,000+ employees
+              across four brands and seven markets. Built the CODE values framework,
+              the One-Stop CX Knowledge Hub, and incentive performance frameworks.
+              Multiple International CX Awards (Forrester) and Emerald GEMS Award.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6: DIB — CURRENT -->
+        <div class="timeline-item" data-aos="fade-right">
+          <div class="timeline-dot current"></div>
+          <div class="timeline-content" style="border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.04);">
+            <span class="current-chip">Current Role</span>
+            <div class="timeline-badge badge-dib">DIB</div>
+            <h5 class="timeline-role">Head of People Experience &amp; Engagement</h5>
+            <p class="timeline-org">Dubai Islamic Bank (DIB)</p>
+            <p class="timeline-dates">May 2026 – Present</p>
+            <p class="timeline-desc">
+              Leading People Experience &amp; Engagement at one of the region's
+              most prominent Islamic banks, bringing 20 years of CX, culture,
+              and people strategy expertise to a new chapter of transformation.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       AWARDS
+       ============================================= -->
+  <section id="awards">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-label">Recognition</span>
+        <h2 class="section-heading section-heading-light">A Track Record of Excellence</h2>
+        <p class="section-sub mx-auto" style="color:rgba(255,255,255,0.5);">
+          Recognised by global and regional bodies for sustained impact
+          in customer experience and organisational culture.
+        </p>
+      </div>
+      <div class="row g-4">
+
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+          <div class="award-card">
+            <div class="award-icon"><i class="fa-solid fa-trophy"></i></div>
+            <p class="award-year">2018 · 2019 · 2021 · 2023 · 2024</p>
+            <h5 class="award-name">International CX Awards</h5>
+            <p class="award-body">Forrester · 5 consecutive wins</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+          <div class="award-card">
+            <div class="award-icon"><i class="fa-solid fa-gem"></i></div>
+            <p class="award-year">2022</p>
+            <h5 class="award-name">Emerald GEMS Award</h5>
+            <p class="award-body">Emirates NBD · Vision, Purpose &amp; Values</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+          <div class="award-card">
+            <div class="award-icon"><i class="fa-solid fa-certificate"></i></div>
+            <p class="award-year">2022</p>
+            <h5 class="award-name">CX Foundation Certification</h5>
+            <p class="award-body">Forrester · Leading with Customer Obsession</p>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+          <div class="award-card">
+            <div class="award-icon"><i class="fa-solid fa-medal"></i></div>
+            <p class="award-year">Multiple Years</p>
+            <h5 class="award-name">ATD Recognition</h5>
+            <p class="award-body">Association for Talent Development · Tanfeeth University</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       EVENTS
+       ============================================= -->
+  <section id="events">
+    <div class="container">
+      <div class="row align-items-end mb-5">
+        <div class="col-lg-7" data-aos="fade-right">
+          <span class="section-label">Events</span>
+          <h2 class="section-heading">Moments That Matter</h2>
+          <p class="section-sub">
+            Designing recognition experiences that inspire, celebrate excellence,
+            and leave a lasting impression on the people who deserve it most.
+          </p>
+        </div>
+      </div>
+
+      <!-- Featured event -->
+      <div class="row mb-4" data-aos="fade-up">
+        <div class="col-12">
+          <div class="event-featured">
+            <div class="row g-0">
+              <div class="col-lg-5">
+                <div class="event-media h-100">
+                  <p class="event-media-label">Red Carpet Event</p>
+                  <h3 class="event-media-title">RBWM CX Drive<br>Red Carpet Evening</h3>
+                  <a href="https://www.linkedin.com/posts/khadija-hashim-7a721617a_rbwm-cx-drive-red-carpet-event-activity-7427778531046129664-dEPh"
+                     target="_blank" rel="noopener" class="event-play-btn">
+                    <i class="fa-brands fa-linkedin me-2"></i>Watch Highlight Video
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="event-body">
+                  <span class="event-tag">2025 · Dubai, UAE</span>
+                  <h3 class="event-title">RBWM CX Drive Red Carpet Event</h3>
+                  <p class="event-desc">
+                    The first CX recognition event at Emirates NBD to bring together colleagues
+                    from across the Group — Emirates NBD, Emirates Islamic, Emirates NBD Services,
+                    and international markets in KSA and Egypt. A six-week CX drive culminated
+                    in a glamorous red-carpet evening celebrating the top 1% of CX champions:
+                    the people who bring enterprise values to life, every single day.
+                    A room full of stars, united by shared purpose and a commitment to excellence.
+                  </p>
+                  <p class="event-desc" style="font-style:italic;font-size:0.88rem;">
+                    "From the red carpet to roaring applause — a celebration of notable improvements
+                    in customer experience and recognition of those who truly unlocked the
+                    CODE to CX Excellence."
+                  </p>
+                  <a href="https://www.linkedin.com/posts/khadija-hashim-7a721617a_rbwm-cx-drive-red-carpet-event-activity-7427778531046129664-dEPh"
+                     target="_blank" rel="noopener" class="event-link">
+                    View on LinkedIn <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder events -->
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="event-placeholder">
+            <div class="event-ph-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+            <h5 class="event-ph-title">Recognition Gala</h5>
+            <p class="event-ph-sub">Coming Soon · DIB</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="80">
+          <div class="event-placeholder">
+            <div class="event-ph-icon"><i class="fa-solid fa-film"></i></div>
+            <h5 class="event-ph-title">Annual Awards Evening</h5>
+            <p class="event-ph-sub">Coming Soon · 2026</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="160">
+          <div class="event-placeholder">
+            <div class="event-ph-icon"><i class="fa-solid fa-people-group"></i></div>
+            <h5 class="event-ph-title">Culture Summit</h5>
+            <p class="event-ph-sub">Coming Soon · 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center mt-4" style="font-size:0.82rem;color:var(--text-light);font-style:italic;">
+        More events in the new chapter at DIB — watch this space.
       </p>
-    </section>
-  </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoKaHzZZFsyboS6bQCbDLFJv23E2eXs8qD" crossorigin="anonymous"></script>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       MEDIA
+       ============================================= -->
+  <section id="media">
+    <div class="container">
+      <div class="row align-items-end mb-5">
+        <div class="col-lg-7" data-aos="fade-right">
+          <span class="section-label">In the Spotlight</span>
+          <h2 class="section-heading">Beyond the Office</h2>
+          <p class="section-sub">
+            Conversations about leadership, life, and the things that shape us
+            most profoundly — inside and outside the workplace.
+          </p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Featured: Podcast -->
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="media-card" style="background:var(--cream);">
+            <div class="media-card-header" style="min-height:180px;">
+              <div class="text-center">
+                <i class="fa-solid fa-microphone" style="font-size:3rem;color:rgba(201,168,76,0.7);"></i>
+                <p style="font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-top:0.5rem;margin-bottom:0;">Podcast Guest</p>
+              </div>
+            </div>
+            <div class="media-card-body">
+              <p class="media-type">Podcast · Personal Story</p>
+              <h4 class="media-card-title">Premature Birth Awareness — Hamoodi's Story</h4>
+              <p class="media-card-desc">
+                One of the most personal conversations I've ever shared.
+                Becoming a mother to an extreme premature baby — born at just 24 weeks —
+                was a journey of fear, faith, and ultimately, profound joy.
+                Today, Hamoodi is a healthy, bright, curious two-year-old. Our story
+                didn't end in fear. It blossomed into hope.
+              </p>
+              <a href="https://lnkd.in/d6Muu2MP" target="_blank" rel="noopener" class="event-link">
+                Listen to Episode <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Placeholder cards -->
+        <div class="col-lg-7">
+          <div class="row g-4">
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="0">
+              <div class="media-placeholder">
+                <i class="fa-solid fa-microphone" style="font-size:1.8rem;color:rgba(201,168,76,0.25);margin-bottom:0.75rem;"></i>
+                <p style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.3rem;">Podcast</p>
+                <p style="font-family:var(--font-display);color:var(--text-light);font-size:1rem;">Coming Soon</p>
+              </div>
+            </div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="80">
+              <div class="media-placeholder">
+                <i class="fa-solid fa-newspaper" style="font-size:1.8rem;color:rgba(201,168,76,0.25);margin-bottom:0.75rem;"></i>
+                <p style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.3rem;">Feature</p>
+                <p style="font-family:var(--font-display);color:var(--text-light);font-size:1rem;">Coming Soon</p>
+              </div>
+            </div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="160">
+              <div class="media-placeholder">
+                <i class="fa-solid fa-person-chalkboard" style="font-size:1.8rem;color:rgba(201,168,76,0.25);margin-bottom:0.75rem;"></i>
+                <p style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.3rem;">Panel Talk</p>
+                <p style="font-family:var(--font-display);color:var(--text-light);font-size:1rem;">Coming Soon</p>
+              </div>
+            </div>
+            <div class="col-sm-6" data-aos="fade-up" data-aos-delay="240">
+              <div class="media-placeholder">
+                <i class="fa-solid fa-video" style="font-size:1.8rem;color:rgba(201,168,76,0.25);margin-bottom:0.75rem;"></i>
+                <p style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:0.3rem;">Interview</p>
+                <p style="font-family:var(--font-display);color:var(--text-light);font-size:1rem;">Coming Soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       INSIGHTS / BLOG
+       ============================================= -->
+  <section id="insights">
+    <div class="container">
+      <div class="row align-items-end mb-4">
+        <div class="col-lg-7" data-aos="fade-right">
+          <span class="section-label">Perspectives</span>
+          <h2 class="section-heading">Thoughts on People, Culture &amp; Experience</h2>
+          <p class="section-sub">
+            Occasional writings on leadership, transformation, and the
+            future of work — when something is worth saying, it will be here.
+          </p>
+        </div>
+      </div>
+
+      <!-- Blog grid — populated by JS or showing placeholders -->
+      <div class="row g-4" id="insightsGrid">
+        <!-- JS renders here, or placeholder shimmer cards below -->
+      </div>
+
+      <!-- Setup note (hidden once posts load) -->
+      <div id="insightsNote" class="mt-4">
+        <div class="insights-note">
+          <strong>How the blog works:</strong> Each post is a public GitHub Gist (.md file).
+          Set <code>GITHUB_USERNAME</code> in the page script to your GitHub username and
+          posts will appear automatically — no backend, no database required.
+          Gist description = post title &nbsp;·&nbsp; Created date = publish date.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       EDUCATION
+       ============================================= -->
+  <section id="education">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-label">Education &amp; Development</span>
+        <h2 class="section-heading">Always Learning</h2>
+        <p class="section-sub mx-auto">
+          A commitment to growth that never stopped — from evening classes
+          alongside a first job to leadership programmes at global institutions.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="edu-item">
+            <div class="edu-icon-wrap"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div>
+              <h5 class="edu-degree">Bachelor's in Business Administration</h5>
+              <p class="edu-institution">University of Wales, Dubai</p>
+              <p class="edu-year">Marketing Specialisation &nbsp;·&nbsp; 2003 – 2007</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+          <div class="edu-item">
+            <div class="edu-icon-wrap"><i class="fa-solid fa-building-columns"></i></div>
+            <div>
+              <h5 class="edu-degree">Leadership &amp; Corporate Entrepreneurship</h5>
+              <p class="edu-institution">INSEAD</p>
+              <p class="edu-year">Executive Programme &nbsp;·&nbsp; November 2019</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+          <div class="edu-item">
+            <div class="edu-icon-wrap"><i class="fa-solid fa-landmark"></i></div>
+            <div>
+              <h5 class="edu-degree">Leadership Programme</h5>
+              <p class="edu-institution">New York University Abu Dhabi</p>
+              <p class="edu-year">2015 – 2016</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="edu-item">
+            <div class="edu-icon-wrap"><i class="fa-solid fa-certificate"></i></div>
+            <div>
+              <h5 class="edu-degree">Leading with Customer Obsession</h5>
+              <p class="edu-institution">Forrester</p>
+              <p class="edu-year">Certified &nbsp;·&nbsp; March 2022</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="80">
+          <div class="edu-item">
+            <div class="edu-icon-wrap"><i class="fa-solid fa-certificate"></i></div>
+            <div>
+              <h5 class="edu-degree">CX Foundation Programme</h5>
+              <p class="edu-institution">Forrester</p>
+              <p class="edu-year">Certified &nbsp;·&nbsp; January 2018</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="160">
+          <div class="edu-item">
+            <div class="edu-icon-wrap"><i class="fa-solid fa-book-open"></i></div>
+            <div>
+              <h5 class="edu-degree">Continuous Professional Development</h5>
+              <p class="edu-institution">CFA Society Emirates &nbsp;·&nbsp; ATD &nbsp;·&nbsp; Various</p>
+              <p class="edu-year">Ongoing</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CONNECT + FOOTER
+       ============================================= -->
+  <section id="connect">
+    <div class="container text-center">
+      <div data-aos="fade-up">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="connect-heading">
+          Let's Build Something<br><span>Remarkable</span>
+        </h2>
+        <p class="connect-sub mx-auto">
+          Whether it's a conversation about people strategy, culture transformation,
+          or the future of CX — I would love to connect.
+        </p>
+        <a href="https://www.linkedin.com/in/khadija-hashim-7a721617a/" target="_blank" rel="noopener" class="btn-gold" style="font-size:0.9rem;padding:1rem 2.5rem;">
+          <i class="fa-brands fa-linkedin me-2"></i>Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <p class="footer-text mb-0">
+        &copy; 2026 Khadija Hashim &nbsp;&middot;&nbsp; Dubai, UAE
+      </p>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/khadija-hashim-7a721617a/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =============================================
+       SCRIPTS
+       ============================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
   <script>
-    AOS.init();
+    /* =============================================
+       CONFIGURATION
+       ============================================= */
+
+    // Set this to Khadija's GitHub username once created.
+    // Each public Gist with a .md file will appear as a blog post.
+    // Gist description = post title; created_at = publish date.
+    const GITHUB_USERNAME = '';
+
+
+    /* =============================================
+       AOS INIT
+       ============================================= */
+    AOS.init({
+      duration: 750,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 60
+    });
+
+
+    /* =============================================
+       NAV — transparent → navy on scroll
+       ============================================= */
+    const mainNav = document.getElementById('mainNav');
+
+    function updateNav() {
+      if (window.scrollY > 50) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+
+    /* =============================================
+       NAV — active link scroll-spy
+       ============================================= */
+    const navLinks = document.querySelectorAll('.nav-link-item');
+    const sections = document.querySelectorAll('section[id]');
+
+    const spyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => spyObserver.observe(s));
+
+
+    /* =============================================
+       HERO — animated role cycling
+       ============================================= */
+    const heroRoles = [
+      'CX &amp; Culture Transformation',
+      'People Strategy &amp; Engagement',
+      'Building Experiences That Matter'
+    ];
+    let heroRoleIdx = 0;
+    const heroRoleEl = document.getElementById('heroRole');
+
+    setInterval(() => {
+      heroRoleEl.classList.add('fade-out');
+      setTimeout(() => {
+        heroRoleIdx = (heroRoleIdx + 1) % heroRoles.length;
+        heroRoleEl.innerHTML = heroRoles[heroRoleIdx];
+        heroRoleEl.classList.remove('fade-out');
+      }, 400);
+    }, 3500);
+
+
+    /* =============================================
+       IMPACT — animated counters
+       ============================================= */
+    function animateCounter(el, target, suffix, duration) {
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(eased * target);
+        el.textContent = value.toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    let countersStarted = false;
+    const impactSection = document.getElementById('impact');
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          document.querySelectorAll('.counter').forEach(el => {
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.dataset.suffix || '';
+            animateCounter(el, target, suffix, 2200);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    if (impactSection) counterObserver.observe(impactSection);
+
+
+    /* =============================================
+       INSIGHTS — GitHub Gists blog loader
+       ============================================= */
+    const insightsGrid  = document.getElementById('insightsGrid');
+    const insightsNote  = document.getElementById('insightsNote');
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function renderGistCard(gist) {
+      const files   = Object.values(gist.files);
+      const mdFile  = files.find(f => f.filename.endsWith('.md')) || files[0];
+      const title   = gist.description || (mdFile ? mdFile.filename.replace(/\.md$/, '') : 'Untitled');
+      const date    = formatDate(gist.created_at);
+      const link    = `https://gist.github.com/${GITHUB_USERNAME}/${gist.id}`;
+
+      const col = document.createElement('div');
+      col.className = 'col-md-6 col-lg-4';
+      col.setAttribute('data-aos', 'fade-up');
+      col.innerHTML = `
+        <div class="blog-card">
+          <p class="blog-date">${date}</p>
+          <h4 class="blog-title">${title}</h4>
+          <p class="blog-excerpt">Published as a public note — click to read the full piece on GitHub Gist.</p>
+          <a href="${link}" target="_blank" rel="noopener" class="blog-read-link">
+            Read <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>`;
+      return col;
+    }
+
+    function renderPlaceholders() {
+      const placeholders = [
+        { title: 'On Leading Cultures That Last', tags: ['Leadership', 'Culture'] },
+        { title: 'What 20 Years in Banking Taught Me About People', tags: ['Reflection', 'People'] },
+        { title: 'The Future of Employee Experience', tags: ['CX', 'Future of Work'] },
+      ];
+
+      placeholders.forEach((p, i) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6 col-lg-4';
+        col.setAttribute('data-aos', 'fade-up');
+        col.setAttribute('data-aos-delay', String(i * 80));
+        col.innerHTML = `
+          <div class="blog-placeholder">
+            <div class="shimmer-line" style="height:12px;width:40%;"></div>
+            <div class="shimmer-line" style="height:20px;width:85%;"></div>
+            <div class="shimmer-line" style="height:20px;width:65%;margin-bottom:1.25rem;"></div>
+            <div class="shimmer-line" style="height:12px;width:100%;"></div>
+            <div class="shimmer-line" style="height:12px;width:90%;"></div>
+            <div class="shimmer-line" style="height:12px;width:75%;margin-bottom:1rem;"></div>
+            <p class="blog-coming-soon">${p.title}</p>
+          </div>`;
+        insightsGrid.appendChild(col);
+      });
+    }
+
+    async function loadInsights() {
+      if (!GITHUB_USERNAME) {
+        renderPlaceholders();
+        return;
+      }
+
+      try {
+        const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/gists`);
+        if (!res.ok) throw new Error('API error');
+        const gists = await res.json();
+        const mdGists = gists.filter(g =>
+          Object.keys(g.files).some(f => f.endsWith('.md'))
+        );
+
+        if (mdGists.length === 0) {
+          renderPlaceholders();
+          return;
+        }
+
+        // Hide setup note when real posts exist
+        if (insightsNote) insightsNote.style.display = 'none';
+
+        mdGists.slice(0, 6).forEach((g, i) => {
+          const col = renderGistCard(g);
+          col.setAttribute('data-aos-delay', String(i * 80));
+          insightsGrid.appendChild(col);
+        });
+
+        // Re-init AOS for newly added elements
+        AOS.refresh();
+      } catch (e) {
+        renderPlaceholders();
+      }
+    }
+
+    loadInsights();
+
+
+    /* =============================================
+       BOUNCE keyframe for hero scroll indicator
+       ============================================= */
+    const bounceStyle = document.createElement('style');
+    bounceStyle.textContent = `
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(5px); }
+      }
+    `;
+    document.head.appendChild(bounceStyle);
+
   </script>
+
 </body>
 </html>
