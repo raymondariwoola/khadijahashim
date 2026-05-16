@@ -142,8 +142,8 @@ sections.forEach(s => spyObserver.observe(s));
    HERO — animated role text cycling
    ============================================= */
 const heroRoles = [
-  'CX &amp; Culture Transformation',
   'People Strategy &amp; Engagement',
+  'CX &amp; Culture Transformation',
   'Building Experiences That Matter',
 ];
 let heroRoleIdx = 0;
