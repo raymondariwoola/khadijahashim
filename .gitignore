@@ -1,0 +1,11 @@
+.claude
+claude.md
+.vscode/
+.idea/
+.DS_Store
+*.log
+*.tmp
+*.bak
+*.swp
+.relottierc.json
+*.pdf
