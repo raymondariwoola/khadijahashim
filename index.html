@@ -20,7 +20,8 @@
   <!-- AOS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <!-- Site styles -->
+  <!-- Site styles (themes.css must load first so its tokens cascade into styles.css) -->
+  <link rel="stylesheet" href="css/themes.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -754,9 +755,14 @@
 
 
   <!-- =============================================
-       THEME TOGGLE
-       Fixed palette button — bottom right corner
-       ============================================= -->
+       THEME PICKER
+       Fixed palette button — bottom right corner.
+       Opens a card with a 2-column swatch grid.
+       Swatch CSS reads two custom properties on
+       each button (--sw-deep / --sw-warm) to render
+       the gradient preview without inline styles
+       on multiple child elements.
+       ============================================= */ -->
   <div id="themeToggle" class="theme-toggle" role="region" aria-label="Colour scheme selector">
 
     <button class="theme-toggle-btn" id="themeToggleBtn"
@@ -765,56 +771,112 @@
     </button>
 
     <div class="theme-panel" id="themePanel" role="listbox" aria-label="Available colour schemes">
-      <p class="theme-panel-label">Colour Scheme</p>
 
-      <button class="theme-swatch active" data-theme="classic" role="option" aria-checked="true">
-        <span class="swatch-colors">
-          <span class="swatch-dot" style="background:#1C2951;"></span>
-          <span class="swatch-dot" style="background:#C9A84C;"></span>
-        </span>
-        <span class="swatch-info">
-          <span class="swatch-name">Classic</span>
-          <span class="swatch-desc">Navy &amp; Gold</span>
-        </span>
-        <i class="fa-solid fa-check swatch-check"></i>
-      </button>
+      <header class="theme-panel-header">
+        <span class="theme-panel-eyebrow">Palette</span>
+        <h3 class="theme-panel-title">Choose a mood</h3>
+        <p class="theme-panel-sub">Eight curated colour schemes &mdash; pick whatever feels right.</p>
+      </header>
 
-      <button class="theme-swatch" data-theme="noir" role="option" aria-checked="false">
-        <span class="swatch-colors">
-          <span class="swatch-dot" style="background:#0F0F0F;"></span>
-          <span class="swatch-dot" style="background:#D4AF5E;"></span>
-        </span>
-        <span class="swatch-info">
-          <span class="swatch-name">Noir</span>
-          <span class="swatch-desc">Obsidian &amp; Champagne</span>
-        </span>
-        <i class="fa-solid fa-check swatch-check"></i>
-      </button>
+      <div class="theme-grid">
 
-      <button class="theme-swatch" data-theme="sage" role="option" aria-checked="false">
-        <span class="swatch-colors">
-          <span class="swatch-dot" style="background:#1A3322;"></span>
-          <span class="swatch-dot" style="background:#B8963C;"></span>
-        </span>
-        <span class="swatch-info">
-          <span class="swatch-name">Sage</span>
-          <span class="swatch-desc">Forest &amp; Gold</span>
-        </span>
-        <i class="fa-solid fa-check swatch-check"></i>
-      </button>
+        <button class="theme-swatch active" data-theme="classic" role="option" aria-checked="true"
+          style="--sw-deep:#1C2951; --sw-warm:#C9A84C;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Classic</span>
+              <span class="swatch-desc">Navy &amp; Gold</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
 
-      <button class="theme-swatch" data-theme="rose" role="option" aria-checked="false">
-        <span class="swatch-colors">
-          <span class="swatch-dot" style="background:#2C1A2E;"></span>
-          <span class="swatch-dot" style="background:#C49096;"></span>
-        </span>
-        <span class="swatch-info">
-          <span class="swatch-name">Rose</span>
-          <span class="swatch-desc">Mauve &amp; Rose Gold</span>
-        </span>
-        <i class="fa-solid fa-check swatch-check"></i>
-      </button>
+        <button class="theme-swatch" data-theme="noir" role="option" aria-checked="false"
+          style="--sw-deep:#0F0F0F; --sw-warm:#D4AF5E;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Noir</span>
+              <span class="swatch-desc">Obsidian &amp; Champagne</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
 
+        <button class="theme-swatch" data-theme="sage" role="option" aria-checked="false"
+          style="--sw-deep:#1A3322; --sw-warm:#B8963C;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Sage</span>
+              <span class="swatch-desc">Forest &amp; Gold</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
+
+        <button class="theme-swatch" data-theme="rose" role="option" aria-checked="false"
+          style="--sw-deep:#2C1A2E; --sw-warm:#C49096;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Rose</span>
+              <span class="swatch-desc">Mauve &amp; Rose Gold</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
+
+        <button class="theme-swatch" data-theme="azure" role="option" aria-checked="false"
+          style="--sw-deep:#14306B; --sw-warm:#B8C6D9;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Azure</span>
+              <span class="swatch-desc">Royal &amp; Platinum</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
+
+        <button class="theme-swatch" data-theme="bordeaux" role="option" aria-checked="false"
+          style="--sw-deep:#4A0E1F; --sw-warm:#CBA257;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Bordeaux</span>
+              <span class="swatch-desc">Wine &amp; Antique Gold</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
+
+        <button class="theme-swatch" data-theme="midnight" role="option" aria-checked="false"
+          style="--sw-deep:#1A1740; --sw-warm:#C7B98A;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Midnight</span>
+              <span class="swatch-desc">Aubergine &amp; Platinum</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
+
+        <button class="theme-swatch" data-theme="terracotta" role="option" aria-checked="false"
+          style="--sw-deep:#5C2A1E; --sw-warm:#C98D5E;">
+          <span class="swatch-preview" aria-hidden="true"></span>
+          <span class="swatch-meta">
+            <span>
+              <span class="swatch-name">Terracotta</span>
+              <span class="swatch-desc">Sienna &amp; Warm Sand</span>
+            </span>
+            <span class="swatch-check" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </span>
+        </button>
+
+      </div>
     </div>
   </div>
 

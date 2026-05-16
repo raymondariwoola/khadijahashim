@@ -1,91 +1,14 @@
 /* =============================================
-   THEME VARIABLES
-   Four colour schemes selectable via data-theme
-   on the <html> element.
+   CORE STYLES
+   -------------------------------------------------
+   All colour-scheme tokens (--navy, --gold, etc.)
+   plus the theme-picker component live in
+   `themes.css`, which must be loaded BEFORE this
+   file so its custom properties are available to
+   every rule below.
    ============================================= */
 
-/* ── Classic: Deep Navy & Warm Gold (default) ── */
-:root,
-[data-theme="classic"] {
-  --navy:          #1C2951;
-  --navy-dark:     #111B35;
-  --navy-mid:      #243460;
-  --navy-rgb:      28, 41, 81;
-  --gold:          #C9A84C;
-  --gold-light:    #E8D5A3;
-  --gold-pale:     #F7EDD8;
-  --gold-rgb:      201, 168, 76;
-  --ivory:         #F5E6C8;
-  --cream:         #FAFAF5;
-  --off-white:     #F4F2EE;
-  --border-gold:   rgba(201, 168, 76, 0.25);
-  --border-light:  rgba(28, 41, 81, 0.08);
-  --shadow-sm:     0 2px 12px rgba(28, 41, 81, 0.07);
-  --shadow-md:     0 8px 32px rgba(28, 41, 81, 0.11);
-  --shadow-lg:     0 20px 60px rgba(28, 41, 81, 0.16);
-}
-
-/* ── Noir: Obsidian & Champagne ── */
-[data-theme="noir"] {
-  --navy:          #0F0F0F;
-  --navy-dark:     #060606;
-  --navy-mid:      #1C1C1C;
-  --navy-rgb:      15, 15, 15;
-  --gold:          #D4AF5E;
-  --gold-light:    #E8CFA0;
-  --gold-pale:     #F0E4CC;
-  --gold-rgb:      212, 175, 94;
-  --ivory:         #EDE0C8;
-  --cream:         #F6F3EC;
-  --off-white:     #EEE9E0;
-  --border-gold:   rgba(212, 175, 94, 0.28);
-  --border-light:  rgba(15, 15, 15, 0.09);
-  --shadow-sm:     0 2px 12px rgba(15, 15, 15, 0.10);
-  --shadow-md:     0 8px 32px rgba(15, 15, 15, 0.14);
-  --shadow-lg:     0 20px 60px rgba(15, 15, 15, 0.22);
-}
-
-/* ── Sage: Deep Forest & Antique Gold ── */
-[data-theme="sage"] {
-  --navy:          #1A3322;
-  --navy-dark:     #0F2018;
-  --navy-mid:      #254838;
-  --navy-rgb:      26, 51, 34;
-  --gold:          #B8963C;
-  --gold-light:    #D4B870;
-  --gold-pale:     #ECD8A8;
-  --gold-rgb:      184, 150, 60;
-  --ivory:         #E8D8B0;
-  --cream:         #F7F5EE;
-  --off-white:     #F0EDE4;
-  --border-gold:   rgba(184, 150, 60, 0.28);
-  --border-light:  rgba(26, 51, 34, 0.09);
-  --shadow-sm:     0 2px 12px rgba(26, 51, 34, 0.08);
-  --shadow-md:     0 8px 32px rgba(26, 51, 34, 0.12);
-  --shadow-lg:     0 20px 60px rgba(26, 51, 34, 0.18);
-}
-
-/* ── Rose: Mauve & Rose Gold ── */
-[data-theme="rose"] {
-  --navy:          #2C1A2E;
-  --navy-dark:     #1A0F1C;
-  --navy-mid:      #3E2842;
-  --navy-rgb:      44, 26, 46;
-  --gold:          #C49096;
-  --gold-light:    #D8ADB2;
-  --gold-pale:     #EDD0D4;
-  --gold-rgb:      196, 144, 150;
-  --ivory:         #E8CDD0;
-  --cream:         #FAF7F8;
-  --off-white:     #F3EEF0;
-  --border-gold:   rgba(196, 144, 150, 0.30);
-  --border-light:  rgba(44, 26, 46, 0.08);
-  --shadow-sm:     0 2px 12px rgba(44, 26, 46, 0.07);
-  --shadow-md:     0 8px 32px rgba(44, 26, 46, 0.11);
-  --shadow-lg:     0 20px 60px rgba(44, 26, 46, 0.17);
-}
-
-/* ── Shared non-theme variables ── */
+/* ── Shared non-theme tokens ── */
 :root {
   --white:         #FFFFFF;
   --text:          #1A1A2E;
@@ -96,18 +19,6 @@
   --transition:    0.32s cubic-bezier(0.4, 0, 0.2, 1);
   --font-display:  'Cormorant Garamond', Georgia, serif;
   --font-body:     'Inter', system-ui, sans-serif;
-}
-
-/* ── Smooth theme transition ── */
-.theme-transitioning,
-.theme-transitioning *,
-.theme-transitioning *::before,
-.theme-transitioning *::after {
-  transition:
-    background-color 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease !important;
 }
 
 
@@ -1331,154 +1242,6 @@ footer {
 
 
 /* =============================================
-   THEME TOGGLE COMPONENT
-   ============================================= */
-.theme-toggle {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 2000;
-}
-
-.theme-toggle-btn {
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: var(--navy);
-  border: 1.5px solid var(--border-gold);
-  color: var(--gold);
-  font-size: 1.05rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(var(--gold-rgb), 0.1);
-  transition: var(--transition);
-  position: relative;
-  z-index: 1;
-}
-
-.theme-toggle-btn:hover {
-  transform: scale(1.06) rotate(15deg);
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
-}
-
-.theme-toggle-btn[aria-expanded="true"] {
-  transform: rotate(180deg);
-}
-
-/* Panel */
-.theme-panel {
-  position: absolute;
-  bottom: calc(100% + 0.75rem);
-  right: 0;
-  background: var(--navy-dark);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius);
-  padding: 1.1rem;
-  width: 220px;
-  opacity: 0;
-  transform: translateY(8px) scale(0.96);
-  pointer-events: none;
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.theme-panel.open {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: all;
-}
-
-.theme-panel-label {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-/* Swatch rows */
-.theme-swatch {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: none;
-  border: 1.5px solid transparent;
-  border-radius: var(--radius-sm);
-  padding: 0.55rem 0.65rem;
-  cursor: pointer;
-  transition: var(--transition);
-  width: 100%;
-  text-align: left;
-  margin-bottom: 0.3rem;
-}
-
-.theme-swatch:last-child { margin-bottom: 0; }
-
-.theme-swatch:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.theme-swatch.active {
-  border-color: var(--border-gold);
-  background: rgba(var(--gold-rgb), 0.07);
-}
-
-.swatch-colors {
-  display: flex;
-  gap: 3px;
-  flex-shrink: 0;
-}
-
-.swatch-dot {
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
-  display: block;
-}
-
-.swatch-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.swatch-name {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-body);
-  display: block;
-}
-
-.swatch-desc {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.35);
-  font-family: var(--font-body);
-  display: block;
-}
-
-.swatch-check {
-  font-size: 0.7rem;
-  color: var(--gold);
-  opacity: 0;
-  flex-shrink: 0;
-  transition: opacity 0.2s ease;
-}
-
-.theme-swatch.active .swatch-check { opacity: 1; }
-
-
-/* =============================================
    ANIMATIONS
    ============================================= */
 @keyframes bounce {
@@ -1528,6 +1291,4 @@ footer {
   .hero-ctas .btn-outline-gold { width: 100%; text-align: center; }
 
   .portrait-frame { width: 180px; height: 180px; }
-
-  .theme-toggle { bottom: 1.25rem; right: 1.25rem; }
 }

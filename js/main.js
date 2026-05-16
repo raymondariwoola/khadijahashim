@@ -16,11 +16,17 @@ const GITHUB_USERNAME = '';
 const THEME_KEY     = 'kh-colour-scheme';
 const DEFAULT_THEME = 'classic';
 
+// Registry must match the [data-theme="…"] blocks in css/themes.css
+// AND the data-theme attributes on .theme-swatch buttons in index.html.
 const themes = {
-  classic: { name: 'Classic',  desc: 'Navy & Gold' },
-  noir:    { name: 'Noir',     desc: 'Obsidian & Champagne' },
-  sage:    { name: 'Sage',     desc: 'Forest & Gold' },
-  rose:    { name: 'Rose',     desc: 'Mauve & Rose Gold' },
+  classic:    { name: 'Classic',    desc: 'Navy & Gold' },
+  noir:       { name: 'Noir',       desc: 'Obsidian & Champagne' },
+  sage:       { name: 'Sage',       desc: 'Forest & Gold' },
+  rose:       { name: 'Rose',       desc: 'Mauve & Rose Gold' },
+  azure:      { name: 'Azure',      desc: 'Royal & Platinum' },
+  bordeaux:   { name: 'Bordeaux',   desc: 'Wine & Antique Gold' },
+  midnight:   { name: 'Midnight',   desc: 'Aubergine & Platinum' },
+  terracotta: { name: 'Terracotta', desc: 'Sienna & Warm Sand' },
 };
 
 function applyTheme(theme) {
