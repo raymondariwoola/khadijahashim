@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Khadija Hashim — Design Directions</title>
+  <meta name="description" content="Four design directions for Khadija Hashim's profile. Choose one to explore.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root, [data-theme="dark"] {
+      --bg: #0B0B0E;
+      --bg-2: #131318;
+      --ink: #F2EDE3;
+      --ink-soft: rgba(242, 237, 227, 0.7);
+      --ink-mute: rgba(242, 237, 227, 0.42);
+      --line: rgba(242, 237, 227, 0.1);
+      --line-hi: rgba(242, 237, 227, 0.22);
+      --accent: #E8B956;
+    }
+    [data-theme="light"] {
+      --bg: #F4F1EA;
+      --bg-2: #ECE7DB;
+      --ink: #15140F;
+      --ink-soft: rgba(21, 20, 15, 0.7);
+      --ink-mute: rgba(21, 20, 15, 0.45);
+      --line: rgba(21, 20, 15, 0.1);
+      --line-hi: rgba(21, 20, 15, 0.2);
+      --accent: #9B6B1F;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle background ambience */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(800px 600px at 15% -10%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 60%),
+        radial-gradient(700px 500px at 110% 30%, color-mix(in srgb, #8B5CF6 10%, transparent), transparent 65%),
+        radial-gradient(900px 700px at 50% 110%, color-mix(in srgb, #B96A4A 8%, transparent), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap { width: min(1280px, 92vw); margin: 0 auto; position: relative; z-index: 2; }
+
+    /* ---------- Top bar ---------- */
+    .top {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .top-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--ink);
+    }
+    .top-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+    .top-brand span {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .top-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .icon-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line-hi);
+      background: transparent;
+      color: var(--ink-soft);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+    .icon-btn:hover { color: var(--ink); border-color: var(--ink); }
+    .icon-btn svg { width: 14px; height: 14px; }
+    .icon-btn .sun { display: none; }
+    [data-theme="light"] .icon-btn .moon { display: none; }
+    [data-theme="light"] .icon-btn .sun { display: inline; }
+    .ghost-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      padding: 0.55rem 0.95rem;
+      border: 1px solid var(--line-hi);
+      border-radius: 999px;
+      transition: all 0.25s ease;
+    }
+    .ghost-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ---------- Hero / Intro ---------- */
+    .hero {
+      padding: clamp(60px, 10vw, 110px) 0 clamp(40px, 6vw, 70px);
+      max-width: 880px;
+    }
+    .hero .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+    }
+    .hero .eyebrow::before {
+      content: '';
+      width: 28px; height: 1px; background: var(--accent);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 0.6rem;
+    }
+    .hero .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ink-mute);
+      margin-top: 1.2rem;
+    }
+
+    /* ---------- Grid of designs ---------- */
+    .grid {
+      padding-bottom: clamp(80px, 12vw, 140px);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .card {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-2);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--line-hi);
+      box-shadow: 0 40px 80px -30px rgba(0,0,0,0.55);
+    }
+
+    .preview {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .preview-num {
+      position: absolute;
+      top: 18px; left: 18px;
+      z-index: 3;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.85);
+      padding: 0.35rem 0.7rem;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+    }
+
+    /* Each preview is a tiny CSS art impression of the design */
+
+    /* Editorial Luxe preview */
+    .pv-editorial {
+      background: linear-gradient(160deg, #14110C, #0E0D0B 60%);
+      padding: 26px 26px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .pv-editorial .meta-row {
+      position: absolute;
+      top: 18px; right: 22px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.7rem;
+      color: rgba(201, 168, 76, 0.9);
+      letter-spacing: 0.04em;
+    }
+    .pv-editorial .title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+      line-height: 0.95;
+      color: #F2EBDD;
+      margin-bottom: 0.4rem;
+    }
+    .pv-editorial .title em {
+      font-style: italic;
+      color: #C9A84C;
+      display: block;
+    }
+    .pv-editorial .lines {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 12px 0 18px;
+    }
+    .pv-editorial .lines span {
+      height: 6px;
+      background: rgba(242, 235, 221, 0.18);
+      border-radius: 2px;
+    }
+    .pv-editorial .lines span:nth-child(1) { width: 70%; }
+    .pv-editorial .lines span:nth-child(2) { width: 86%; }
+    .pv-editorial .lines span:nth-child(3) { width: 58%; }
+    .pv-editorial .rule {
+      width: 60px; height: 2px; background: #C9A84C; margin-bottom: 14px;
+    }
+
+    /* Corporate (terminal/data) preview */
+    .pv-corporate {
+      background: linear-gradient(180deg, #0F1115 0%, #0A0B0D 100%);
+      padding: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #DDE3EC;
+    }
+    .pv-corporate .bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.6rem;
+      color: rgba(221, 227, 236, 0.6);
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+    }
+    .pv-corporate .bar .dot { width: 7px; height: 7px; border-radius: 50%; background: #E8B33B; box-shadow: 0 0 8px #E8B33B; }
+    .pv-corporate .bar .seg { flex: 1; height: 1px; background: rgba(221, 227, 236, 0.18); }
+    .pv-corporate .rows { display: grid; gap: 8px; }
+    .pv-corporate .row {
+      display: grid;
+      grid-template-columns: 60px 1fr 50px;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+    .pv-corporate .row .k { color: #6B7480; letter-spacing: 0.1em; }
+    .pv-corporate .row .v { color: #F2F4F8; letter-spacing: 0.04em; }
+    .pv-corporate .row .pill {
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
+      color: #E8B33B;
+      border: 1px solid rgba(232, 179, 59, 0.4);
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .pv-corporate .spark {
+      grid-column: 1 / -1;
+      height: 28px;
+      margin-top: 8px;
+    }
+    .pv-corporate .spark svg { width: 100%; height: 100%; }
+    .pv-corporate .spark path {
+      fill: none; stroke: #E8B33B; stroke-width: 1.2;
+    }
+
+    /* Glass & Motion preview */
+    .pv-glass {
+      background: radial-gradient(circle at 20% 20%, #2D1B4E, transparent 50%),
+                  radial-gradient(circle at 80% 30%, #B96A4A, transparent 55%),
+                  radial-gradient(circle at 50% 90%, #C9A86A, transparent 50%),
+                  #07070C;
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pv-glass::before,
+    .pv-glass::after {
+      content: '';
+      position: absolute;
+      filter: blur(40px);
+      opacity: 0.7;
+    }
+    .pv-glass::before { width: 180px; height: 180px; background: #8B5CF6; top: -40px; left: -30px; }
+    .pv-glass::after { width: 160px; height: 160px; background: #F472B6; bottom: -40px; right: -30px; }
+    .pv-glass .pill {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      padding: 0.4rem 0.85rem;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .pv-glass .title {
+      position: relative;
+      z-index: 2;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+      line-height: 1;
+      color: #F2EDE3;
+      margin-bottom: 12px;
+    }
+    .pv-glass .title .grad {
+      background: linear-gradient(135deg, #E8B956, #F472B6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .pv-glass .cards {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .pv-glass .gc {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 10px;
+      padding: 10px 12px;
+      min-height: 50px;
+    }
+    .pv-glass .gc .l {
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 4px;
+    }
+    .pv-glass .gc .v {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: #E8B956;
+    }
+
+    /* Boutique preview */
+    .pv-boutique {
+      background: linear-gradient(170deg, #1A1612, #14110D);
+      padding: 0;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .pv-boutique .left {
+      padding: 22px 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pv-boutique .top {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(242, 235, 221, 0.55);
+      padding: 0;
+      border: none;
+    }
+    .pv-boutique .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+      line-height: 0.95;
+      color: #F2EBDD;
+    }
+    .pv-boutique .name em {
+      font-style: italic;
+      color: #B96A4A;
+      display: block;
+    }
+    .pv-boutique .meta {
+      display: flex;
+      gap: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(242, 235, 221, 0.14);
+    }
+    .pv-boutique .meta .k {
+      display: block;
+      font-size: 0.5rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(242, 235, 221, 0.4);
+    }
+    .pv-boutique .meta .v {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      color: #F2EBDD;
+    }
+    .pv-boutique .frame {
+      position: relative;
+      background: linear-gradient(155deg, #1F1A14, #100D09);
+      border-left: 1px solid rgba(242, 235, 221, 0.14);
+    }
+    .pv-boutique .frame::before {
+      content: '';
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(242, 235, 221, 0.22);
+    }
+    .pv-boutique .frame::after {
+      content: '';
+      position: absolute;
+      bottom: 22px; left: 22px; right: 22px;
+      height: 1px;
+      background: rgba(242, 235, 221, 0.2);
+    }
+    .pv-boutique .frame-tag {
+      position: absolute;
+      top: -8px;
+      right: 22px;
+      background: #14110D;
+      color: #B96A4A;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(242, 235, 221, 0.22);
+      border-radius: 999px;
+    }
+
+    /* ---------- Card body ---------- */
+    .card-body {
+      padding: 1.8rem 1.8rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      flex: 1;
+    }
+    .card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2vw, 1.7rem);
+      line-height: 1.15;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .card-feats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+    .card-feats span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.2rem 1.8rem 1.6rem;
+      border-top: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 60%, transparent);
+    }
+    .card-foot .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      color: var(--ink-mute);
+      text-transform: uppercase;
+    }
+    .enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      transition: all 0.25s ease;
+    }
+    .enter:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+    .enter svg { width: 12px; height: 12px; transition: transform 0.25s ease; }
+    .enter:hover svg { transform: translateX(3px); }
+
+    /* ---------- Foot ---------- */
+    .foot {
+      padding: 2.4rem 0 3rem;
+      border-top: 1px solid var(--line);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .foot-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .foot a { color: var(--ink-soft); transition: color 0.25s ease; }
+    .foot a:hover { color: var(--accent); }
+
+    /* ---------- Reveal ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition-delay: var(--rd, 0s);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .top-inner { gap: 0.6rem; }
+      .top-brand span { display: none; }
+    }
+    @media (max-width: 520px) {
+      .card-foot { flex-direction: column; align-items: flex-start; }
+      .ghost-link { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- ============== TOP BAR ============== -->
+  <header class="top">
+    <div class="wrap top-inner">
+      <a href="../" class="top-brand">
+        <span class="top-mark">kh</span>
+        <span>Khadija Hashim · Design Studio</span>
+      </a>
+      <div class="top-actions">
+        <a class="ghost-link" href="../">← Original Site</a>
+        <button class="icon-btn" data-theme-toggle aria-label="Toggle theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ============== HERO ============== -->
+  <section class="wrap hero">
+    <p class="eyebrow reveal">Four Directions · One Story</p>
+    <h1 class="reveal" style="--rd:.05s">
+      Choose how to experience <em>Khadija's story.</em>
+    </h1>
+    <p class="reveal" style="--rd:.1s">
+      Four distinct design directions — each crafted around the same content,
+      each speaking with a different voice. Pick whichever resonates most.
+      Every design is fully responsive with light and dark modes, and respects
+      reduced-motion preferences.
+    </p>
+    <p class="sub reveal" style="--rd:.15s">
+      The original site is still untouched and available <a style="color: var(--accent); border-bottom: 1px solid currentColor;" href="../">here</a>.
+    </p>
+  </section>
+
+
+  <!-- ============== GRID ============== -->
+  <section class="wrap grid">
+
+    <!-- 01 EDITORIAL LUXE -->
+    <a class="card reveal" href="editorial/">
+      <div class="preview pv-editorial">
+        <span class="preview-num">01 · Editorial</span>
+        <span class="meta-row">Vol. I · MMXXVI</span>
+        <div>
+          <div class="rule"></div>
+          <h3 class="title">Khadija<em>Hashim</em></h3>
+          <div class="lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">01 · Editorial Luxe</p>
+        <h3 class="card-title">A printed magazine, brought to life.</h3>
+        <p class="card-desc">
+          Cormorant Garamond display, drop caps, pull quotes, and gold rules.
+          Volume framing ("Vol. I · MMXXVI · The People Issue") sets a refined,
+          editorial cadence. Best for storytelling-led readers.
+        </p>
+        <div class="card-feats">
+          <span>Cormorant Garamond</span>
+          <span>Drop caps</span>
+          <span>Pull quotes</span>
+          <span>Gold accents</span>
+        </div>
+      </div>
+      <div class="card-foot">
+        <span class="meta">/v2/editorial</span>
+        <span class="enter">
+          Enter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 02 QUIET CORPORATE -->
+    <a class="card reveal" style="--rd:.08s" href="corporate/">
+      <div class="preview pv-corporate">
+        <span class="preview-num">02 · Corporate</span>
+        <div class="bar">
+          <span class="dot"></span>
+          <span>SUBJECT · KH</span>
+          <span class="seg"></span>
+          <span>STATUS · ACTIVE</span>
+          <span class="seg"></span>
+          <span>04:18 GST</span>
+        </div>
+        <div class="rows">
+          <div class="row">
+            <span class="k">YEARS</span>
+            <span class="v">20+ · Banking &amp; CX</span>
+            <span class="pill">+5%</span>
+          </div>
+          <div class="row">
+            <span class="k">REACH</span>
+            <span class="v">16,000+ employees</span>
+            <span class="pill">↑</span>
+          </div>
+          <div class="row">
+            <span class="k">AWARDS</span>
+            <span class="v">5× Forrester · 1× Emerald</span>
+            <span class="pill">★</span>
+          </div>
+          <div class="spark">
+            <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+              <path d="M0 22 L12 20 L24 18 L36 14 L48 16 L60 10 L72 12 L84 6 L100 4"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">02 · Quiet Corporate</p>
+        <h3 class="card-title">A premium data report, refined for boardrooms.</h3>
+        <p class="card-desc">
+          Monospace data labels, ticker-style topbar with live clock, indicators
+          with sparklines, ledger-style career table. Reads like a Bloomberg-meets-FT
+          terminal. For leaders who value signal density.
+        </p>
+        <div class="card-feats">
+          <span>JetBrains Mono</span>
+          <span>Sparklines</span>
+          <span>Live clock</span>
+          <span>Data ledger</span>
+        </div>
+      </div>
+      <div class="card-foot">
+        <span class="meta">/v2/corporate</span>
+        <span class="enter">
+          Enter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 03 GLASS & MOTION -->
+    <a class="card reveal" style="--rd:.16s" href="glass/">
+      <div class="preview pv-glass">
+        <span class="preview-num">03 · Glass</span>
+        <span class="pill">● Available · Dubai, UAE</span>
+        <h3 class="title">People, <span class="grad">reimagined.</span></h3>
+        <div class="cards">
+          <div class="gc">
+            <div class="l">Years</div>
+            <div class="v">20+</div>
+          </div>
+          <div class="gc">
+            <div class="l">Reach</div>
+            <div class="v">16k+</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">03 · Glass &amp; Motion</p>
+        <h3 class="card-title">Atmospheric, animated, distinctly modern.</h3>
+        <p class="card-desc">
+          Drifting aurora gradients, frosted glass cards, 3D-tilt portrait,
+          gradient-text headlines, marquee brand strip, glowing current-role dot.
+          For those drawn to motion, depth, and contemporary craft.
+        </p>
+        <div class="card-feats">
+          <span>Aurora gradients</span>
+          <span>Glassmorphism</span>
+          <span>3D tilt</span>
+          <span>Bento grid</span>
+        </div>
+      </div>
+      <div class="card-foot">
+        <span class="meta">/v2/glass</span>
+        <span class="enter">
+          Enter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- 04 BOUTIQUE -->
+    <a class="card reveal" style="--rd:.24s" href="boutique/">
+      <div class="preview pv-boutique">
+        <div class="left">
+          <p class="top">In Residence · Dubai</p>
+          <h3 class="name">Khadija<em>Hashim</em></h3>
+          <div class="meta">
+            <div>
+              <span class="k">Based</span>
+              <span class="v">Dubai</span>
+            </div>
+            <div>
+              <span class="k">Now</span>
+              <span class="v">DIB · 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="frame">
+          <span class="frame-tag">Plate I</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-tag">04 · Boutique Hospitality</p>
+        <h3 class="card-title">Aman &amp; Soho House warmth, applied to a profile.</h3>
+        <p class="card-desc">
+          Warm earth palette of taupe, ivory, terracotta, and forest. Framed
+          portrait plate, drop-cap stories, ruled verse-style career, forest-green
+          connect band. Quiet, considered, hospitable.
+        </p>
+        <div class="card-feats">
+          <span>Earth palette</span>
+          <span>Framed plates</span>
+          <span>Italic display</span>
+          <span>Slow storytelling</span>
+        </div>
+      </div>
+      <div class="card-foot">
+        <span class="meta">/v2/boutique</span>
+        <span class="enter">
+          Enter
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </section>
+
+
+  <!-- ============== FOOT ============== -->
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <p>© <span data-year>2026</span> · Khadija Hashim · Design Studio</p>
+      <p><a href="../">Back to Original Site →</a></p>
+    </div>
+  </footer>
+
+
+  <script>
+    (function () {
+      'use strict';
+      const root = document.documentElement;
+      const THEME_KEY = 'kh-picker-theme';
+      const stored = localStorage.getItem(THEME_KEY);
+      root.setAttribute('data-theme', stored === 'light' ? 'light' : 'dark');
+      document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+          root.setAttribute('data-theme', next);
+          localStorage.setItem(THEME_KEY, next);
+        });
+      });
+
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+      }
+
+      const y = document.querySelector('[data-year]');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
