@@ -700,6 +700,26 @@ section { position: relative; }
   background: rgba(var(--gold-rgb), 0.04) !important;
 }
 
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.timeline-tag-chip {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(var(--gold-rgb), 0.08);
+  border: 1px solid rgba(var(--gold-rgb), 0.2);
+  border-radius: 2rem;
+  padding: 0.25rem 0.7rem;
+}
+
 
 /* =============================================
    AWARDS
