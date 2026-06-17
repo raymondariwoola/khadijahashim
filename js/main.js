@@ -207,8 +207,9 @@ if (impactSection) {
 /* =============================================
    INSIGHTS — GitHub Gists blog loader
    =============================================
-   To activate: set GITHUB_USERNAME above.
-   Each public Gist with a .md file becomes a post.
+   Fetches public Gists, extracts real excerpts
+   from the markdown content, and renders full
+   articles on-site using marked.js.
    ============================================= */
 const insightsGrid = document.getElementById('insightsGrid');
 const insightsNote = document.getElementById('insightsNote');
@@ -219,31 +220,91 @@ function formatDate(iso) {
   });
 }
 
-function renderGistCard(gist, delay) {
+function extractExcerpt(markdown, maxLen = 180) {
+  const plain = markdown
+    .replace(/^#{1,6}\s+.*$/gm, '')
+    .replace(/[*_~`>]/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\n{2,}/g, '\n')
+    .trim();
+  const firstChunk = plain.split('\n').filter(l => l.trim().length > 20).slice(0, 3).join(' ');
+  if (firstChunk.length <= maxLen) return firstChunk;
+  return firstChunk.slice(0, maxLen).replace(/\s+\S*$/, '') + '…';
+}
+
+function estimateReadTime(text) {
+  const words = text.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 220));
+}
+
+function renderGistCard(gist, rawContent, delay) {
   const files  = Object.values(gist.files);
   const mdFile = files.find(f => f.filename.endsWith('.md')) || files[0];
   const title  = gist.description
     || (mdFile ? mdFile.filename.replace(/\.md$/, '') : 'Untitled');
-  const link   = `https://gist.github.com/${GITHUB_USERNAME}/${gist.id}`;
+  const excerpt  = extractExcerpt(rawContent);
+  const readMins = estimateReadTime(rawContent);
 
   const col = document.createElement('div');
   col.className = 'col-md-6 col-lg-4';
   col.setAttribute('data-aos', 'fade-up');
   col.setAttribute('data-aos-delay', String(delay));
   col.innerHTML = `
-    <div class="blog-card">
-      <p class="blog-date">${formatDate(gist.created_at)}</p>
+    <div class="blog-card" role="button" tabindex="0">
+      <p class="blog-date">${formatDate(gist.created_at)} · ${readMins} min read</p>
       <h4 class="blog-title">${title}</h4>
-      <p class="blog-excerpt">
-        Published as a public note — click to read the full piece on GitHub Gist.
-      </p>
-      <a href="${link}" target="_blank" rel="noopener" class="blog-read-link">
-        Read <i class="fa-solid fa-arrow-right"></i>
-      </a>
+      <p class="blog-excerpt">${excerpt}</p>
+      <span class="blog-read-link">
+        Read Article <i class="fa-solid fa-arrow-right"></i>
+      </span>
     </div>`;
+
+  const card = col.querySelector('.blog-card');
+  card.addEventListener('click', () => openArticle(title, gist.created_at, rawContent));
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openArticle(title, gist.created_at, rawContent);
+    }
+  });
+
   return col;
 }
 
+/* ── Article overlay ── */
+const articleOverlay  = document.getElementById('articleOverlay');
+const articleClose    = document.getElementById('articleClose');
+const articleTitle    = document.getElementById('articleTitle');
+const articleDate     = document.getElementById('articleDate');
+const articleContent  = document.getElementById('articleContent');
+
+function openArticle(title, date, markdown) {
+  const body = markdown.replace(/^#\s+.*\n+/, '');
+  articleTitle.textContent   = title;
+  articleDate.textContent    = formatDate(date);
+  articleContent.innerHTML   = marked.parse(body);
+  articleOverlay.classList.add('open');
+  articleOverlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  articleOverlay.querySelector('.article-container').scrollTop = 0;
+}
+
+function closeArticle() {
+  articleOverlay.classList.remove('open');
+  articleOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+if (articleClose) articleClose.addEventListener('click', closeArticle);
+if (articleOverlay) {
+  articleOverlay.querySelector('.article-overlay-backdrop')
+    .addEventListener('click', closeArticle);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && articleOverlay.classList.contains('open')) closeArticle();
+  });
+}
+
+/* ── Placeholders (when no username or no gists) ── */
 function renderPlaceholders() {
   const items = [
     'Why Employee Experience and Customer Experience Are Inseparable',
@@ -269,6 +330,7 @@ function renderPlaceholders() {
   });
 }
 
+/* ── Main loader ── */
 async function loadInsights() {
   if (!insightsGrid) return;
 
@@ -291,11 +353,17 @@ async function loadInsights() {
       return;
     }
 
-    // Hide setup note when real posts exist
     if (insightsNote) insightsNote.style.display = 'none';
 
-    mdGists.slice(0, 6).forEach((g, i) => {
-      insightsGrid.appendChild(renderGistCard(g, i * 80));
+    const selected = mdGists.slice(0, 6);
+    const contentPromises = selected.map(g => {
+      const mdFile = Object.values(g.files).find(f => f.filename.endsWith('.md'));
+      return mdFile ? fetch(mdFile.raw_url).then(r => r.text()) : Promise.resolve('');
+    });
+    const contents = await Promise.all(contentPromises);
+
+    selected.forEach((g, i) => {
+      insightsGrid.appendChild(renderGistCard(g, contents[i], i * 80));
     });
 
     AOS.refresh();
