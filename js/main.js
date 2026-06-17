@@ -142,7 +142,7 @@ sections.forEach(s => spyObserver.observe(s));
    HERO — animated role text cycling
    ============================================= */
 const heroRoles = [
-  'People Strategy &amp; Engagement',
+  'People &amp; Culture Leadership',
   'CX &amp; Culture Transformation',
   'Building Experiences That Matter',
 ];
@@ -246,7 +246,7 @@ function renderGistCard(gist, delay) {
 
 function renderPlaceholders() {
   const items = [
-    'On Leading Cultures That Last',
+    'Why Employee Experience and Customer Experience Are Inseparable',
     'What 20 Years in Banking Taught Me About People',
     'The Future of Employee Experience',
   ];
