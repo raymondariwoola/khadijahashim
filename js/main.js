@@ -282,7 +282,7 @@ function openArticle(title, date, markdown) {
   const body = markdown.replace(/^#\s+.*\n+/, '');
   articleTitle.textContent   = title;
   articleDate.textContent    = formatDate(date);
-  articleContent.innerHTML   = marked.parse(body);
+  articleContent.innerHTML   = marked.parse(body, { breaks: true });
   articleOverlay.classList.add('open');
   articleOverlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
