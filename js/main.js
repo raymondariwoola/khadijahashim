@@ -260,11 +260,11 @@ function renderGistCard(gist, rawContent, delay) {
     </div>`;
 
   const card = col.querySelector('.blog-card');
-  card.addEventListener('click', () => openArticle(title, gist.created_at, rawContent));
+  card.addEventListener('click', () => openArticle(title, gist.created_at, rawContent, gist.id));
   card.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      openArticle(title, gist.created_at, rawContent);
+      openArticle(title, gist.created_at, rawContent, gist.id);
     }
   });
 
@@ -274,11 +274,12 @@ function renderGistCard(gist, rawContent, delay) {
 /* ── Article overlay ── */
 const articleOverlay  = document.getElementById('articleOverlay');
 const articleClose    = document.getElementById('articleClose');
+const articleShare    = document.getElementById('articleShare');
 const articleTitle    = document.getElementById('articleTitle');
 const articleDate     = document.getElementById('articleDate');
 const articleContent  = document.getElementById('articleContent');
 
-function openArticle(title, date, markdown) {
+function openArticle(title, date, markdown, gistId) {
   const body = markdown.replace(/^#\s+.*\n+/, '');
   articleTitle.textContent   = title;
   articleDate.textContent    = formatDate(date);
@@ -287,12 +288,14 @@ function openArticle(title, date, markdown) {
   articleOverlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
   articleOverlay.querySelector('.article-container').scrollTop = 0;
+  if (gistId) history.pushState(null, '', '#article/' + gistId);
 }
 
 function closeArticle() {
   articleOverlay.classList.remove('open');
   articleOverlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  if (location.hash.startsWith('#article/')) history.pushState(null, '', location.pathname);
 }
 
 if (articleClose) articleClose.addEventListener('click', closeArticle);
@@ -302,6 +305,46 @@ if (articleOverlay) {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && articleOverlay.classList.contains('open')) closeArticle();
   });
+}
+
+window.addEventListener('popstate', () => {
+  if (!location.hash.startsWith('#article/') && articleOverlay.classList.contains('open')) {
+    articleOverlay.classList.remove('open');
+    articleOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+});
+
+if (articleShare) {
+  articleShare.addEventListener('click', () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+      const label = articleShare.querySelector('span');
+      const icon  = articleShare.querySelector('i');
+      label.textContent = 'Copied!';
+      icon.className = 'fa-solid fa-check';
+      setTimeout(() => {
+        label.textContent = 'Copy Link';
+        icon.className = 'fa-solid fa-link';
+      }, 2000);
+    });
+  });
+}
+
+async function openArticleFromHash() {
+  const match = location.hash.match(/^#article\/([a-f0-9]+)$/);
+  if (!match || !GITHUB_USERNAME) return;
+  const gistId = match[1];
+  try {
+    const res = await fetch(`https://api.github.com/gists/${gistId}`);
+    if (!res.ok) return;
+    const gist = await res.json();
+    const mdFile = Object.values(gist.files).find(f => f.filename.endsWith('.md'));
+    if (!mdFile) return;
+    const title = gist.description || mdFile.filename.replace(/\.md$/, '');
+    const content = mdFile.content || await fetch(mdFile.raw_url).then(r => r.text());
+    openArticle(title, gist.created_at, content, gistId);
+  } catch { /* ignore — visitor sees the normal page */ }
 }
 
 /* ── Placeholders (when no username or no gists) ── */
@@ -379,8 +422,8 @@ loadInsights();
    INIT — runs after DOM is ready
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore and wire up theme toggle
   const saved = localStorage.getItem(THEME_KEY) || DEFAULT_THEME;
   applyTheme(saved);
   initThemeToggle();
+  openArticleFromHash();
 });

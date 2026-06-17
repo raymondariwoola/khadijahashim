@@ -1277,6 +1277,9 @@ section { position: relative; }
   background: var(--white);
   border-bottom: 1px solid var(--border-light);
   padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .article-close {
@@ -1298,6 +1301,29 @@ section { position: relative; }
 
 .article-close:hover {
   gap: 0.9rem;
+  color: var(--navy);
+}
+
+.article-share {
+  background: rgba(var(--gold-rgb), 0.1);
+  border: 1px solid var(--border-gold);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  transition: var(--transition);
+}
+
+.article-share:hover {
+  background: rgba(var(--gold-rgb), 0.18);
   color: var(--navy);
 }
 
