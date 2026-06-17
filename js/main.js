@@ -7,7 +7,7 @@
    Convention: gist description = post title,
    created_at = publish date, first .md file = body.
    ============================================= */
-const GITHUB_USERNAME = '';
+const GITHUB_USERNAME = 'khadijahashim'; // e.g. 'khadijahashim' or '' to disable blog posts
 
 
 /* =============================================
