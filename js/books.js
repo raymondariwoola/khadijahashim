@@ -11,6 +11,18 @@
    ============================================= */
 const RECOMMENDED_BOOKS = [
   {
+    title: 'Social Engineering: The Art of Human Hacking',
+    author: 'Christopher Hadnagy',
+    coverUrl: 'https://covers.openlibrary.org/b/isbn/978-0-470-63953-5-L.jpg',
+    description: 'The book reveals how malicious actors use behavioral science—rather than code-cracking—to trick individuals into divulging sensitive information or granting access to secure systems.',
+  },
+  {
+    title: 'The 48 Laws of Power',
+    author: 'Robert Greene',
+    coverUrl: 'https://covers.openlibrary.org/b/isbn/978-1598870923-L.jpg',
+    description: 'A practical and ruthless guide to acquiring, observing, and defending against power.',
+  },
+  {
     title: 'The Culture Code',
     author: 'Daniel Coyle',
     coverUrl: 'https://covers.openlibrary.org/b/isbn/9780804176989-L.jpg',
