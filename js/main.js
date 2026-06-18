@@ -419,6 +419,92 @@ loadInsights();
 
 
 /* =============================================
+   RECOMMENDED BOOKS
+   ============================================= */
+const BOOKS_PREVIEW_COUNT = 6;
+
+function renderBookCard(book, delay, includeDesc) {
+  const col = document.createElement('div');
+  col.className = includeDesc ? 'col-6 col-sm-4 col-lg-3' : 'col-6 col-sm-4 col-lg-2';
+  col.setAttribute('data-aos', 'fade-up');
+  col.setAttribute('data-aos-delay', String(delay));
+
+  const cardClass = includeDesc ? 'book-card-full' : 'book-card';
+  const descHtml = includeDesc && book.description
+    ? `<p class="book-desc">${book.description}</p>` : '';
+
+  col.innerHTML = `
+    <div class="${cardClass}">
+      <div class="book-cover-wrap">
+        <span class="book-spine"></span>
+        <img class="book-cover" src="${book.coverUrl}" alt="${book.title}" loading="lazy"
+             onerror="this.outerHTML='<div class=\\'book-cover-fallback\\'><i class=\\'fa-solid fa-book\\'></i><span>${book.title}</span></div>'">
+      </div>
+      <h4 class="book-title">${book.title}</h4>
+      <p class="book-author">${book.author}</p>
+      ${descHtml}
+    </div>`;
+  return col;
+}
+
+function initBooks() {
+  const grid = document.getElementById('booksGrid');
+  const viewAllWrap = document.getElementById('booksViewAll');
+  if (!grid || typeof RECOMMENDED_BOOKS === 'undefined' || !RECOMMENDED_BOOKS.length) return;
+
+  const preview = RECOMMENDED_BOOKS.slice(0, BOOKS_PREVIEW_COUNT);
+  preview.forEach((book, i) => {
+    grid.appendChild(renderBookCard(book, i * 60, false));
+  });
+
+  if (RECOMMENDED_BOOKS.length > BOOKS_PREVIEW_COUNT) {
+    viewAllWrap.style.display = '';
+    document.getElementById('booksViewAllBtn').addEventListener('click', openBooksOverlay);
+  }
+
+  AOS.refresh();
+}
+
+function openBooksOverlay() {
+  const overlay = document.getElementById('booksOverlay');
+  const grid = document.getElementById('booksOverlayGrid');
+  const count = document.getElementById('booksOverlayCount');
+  if (!overlay) return;
+
+  grid.innerHTML = '';
+  count.textContent = RECOMMENDED_BOOKS.length + ' books';
+  RECOMMENDED_BOOKS.forEach((book, i) => {
+    grid.appendChild(renderBookCard(book, i * 40, true));
+  });
+
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  overlay.querySelector('.books-overlay-container').scrollTop = 0;
+}
+
+function closeBooksOverlay() {
+  const overlay = document.getElementById('booksOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+(function () {
+  const overlay = document.getElementById('booksOverlay');
+  if (!overlay) return;
+  const closeBtn = document.getElementById('booksOverlayClose');
+  if (closeBtn) closeBtn.addEventListener('click', closeBooksOverlay);
+  overlay.querySelector('.books-overlay-backdrop')
+    .addEventListener('click', closeBooksOverlay);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeBooksOverlay();
+  });
+})();
+
+
+/* =============================================
    INIT — runs after DOM is ready
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
@@ -426,4 +512,5 @@ document.addEventListener('DOMContentLoaded', () => {
   applyTheme(saved);
   initThemeToggle();
   openArticleFromHash();
+  initBooks();
 });
